@@ -17,8 +17,8 @@ import com.nateyolles.sling.publick.services.UserService;
 /**
  * Access information about users and groups.
  */
-@Service( value = UserService.class )
-@Component( metatype = true, immediate = true )
+@Service
+@Component
 public class UserServiceImpl implements UserService {
 
     /** The logger */

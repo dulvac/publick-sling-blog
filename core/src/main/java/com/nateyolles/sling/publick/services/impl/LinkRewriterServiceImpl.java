@@ -31,8 +31,8 @@ import com.nateyolles.sling.publick.services.SystemSettingsService;
  * removing ".html" extensions, removing trailing slashes, and removing index
  * file names.
  */
-@Service( value = LinkRewriterService.class )
-@Component( metatype = true, immediate = true )
+@Service
+@Component
 public class LinkRewriterServiceImpl implements LinkRewriterService {
 
     @Reference

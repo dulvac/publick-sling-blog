@@ -25,11 +25,8 @@ import com.nateyolles.sling.publick.services.OsgiConfigurationService;
 /**
  * Service to interact with OSGi configurations.
  */
-@Service(value = OsgiConfigurationService.class)
-@Component(metatype = true,
-           immediate = true,
-           name = "Publick OSGi Configuration Service",
-           description = "Programatically set properties of OSGi configurations.")
+@Service
+@Component(name = "Publick OSGi Configuration Service", description = "Programatically set properties of OSGi configurations.")
 public class OsgiConfigurationServiceImpl implements OsgiConfigurationService {
 
     /** The service to get OSGi configs */

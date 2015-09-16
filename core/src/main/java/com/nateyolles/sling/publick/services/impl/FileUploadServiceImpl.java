@@ -26,8 +26,8 @@ import com.nateyolles.sling.publick.services.FileUploadService;
 /**
  * Service to handle file uploading.
  */
-@Service( value = FileUploadService.class )
-@Component( metatype = true, immediate = true )
+@Service
+@Component
 public class FileUploadServiceImpl implements FileUploadService {
 
     /**

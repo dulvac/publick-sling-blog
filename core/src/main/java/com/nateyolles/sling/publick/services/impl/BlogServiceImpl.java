@@ -25,8 +25,8 @@ import org.slf4j.LoggerFactory;
 import com.nateyolles.sling.publick.PublickConstants;
 import com.nateyolles.sling.publick.services.BlogService;
 
-@Service( value = BlogService.class )
-@Component( metatype = true, immediate = true )
+@Service
+@Component
 public class BlogServiceImpl implements BlogService {
 
     /**

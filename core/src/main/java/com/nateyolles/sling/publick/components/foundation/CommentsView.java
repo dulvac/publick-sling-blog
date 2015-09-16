@@ -81,7 +81,7 @@ public class CommentsView extends WCMUse {
     private List<HashMap<String, Object>> getCommentList(Resource resource, boolean getReplies) {
         List<HashMap<String, Object>> comments = new ArrayList<HashMap<String, Object>>();
 
-        if (resource != null && resource.hasChildren()) {
+        if (resource != null) {
             Iterator<Resource> iterator = resource.listChildren();
 
             while (iterator.hasNext()) {
