@@ -199,6 +199,10 @@ public class Activator implements BundleActivator {
                         testers = userManager.createGroup(PublickConstants.GROUP_ID_TESTERS);
                         testers.setProperty(GROUP_DISPLAY_NAME, valueFactory.createValue(PublickConstants.GROUP_DISPLAY_TESTERS));
                     }
+
+                    if (session.hasPendingChanges()) {
+                        session.save();
+                    }
                 }
             } catch (RepositoryException e) {
                 LOGGER.error("Could not get session", e);
