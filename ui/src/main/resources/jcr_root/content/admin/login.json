@@ -1,5 +1,5 @@
 {
-    "jcr:primaryType": "publick:page",
+    "jcr:primaryType": "nt:unstructured",
     "sling:resourceType" : "publick/pages/adminPage",
     "title" : "Login",
     "jcr:content" : {

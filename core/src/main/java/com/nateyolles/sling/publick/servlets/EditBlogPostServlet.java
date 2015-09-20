@@ -91,7 +91,7 @@ public class EditBlogPostServlet extends SlingAllMethodsServlet {
         }
 
         Map<String, Object> properties = new HashMap<String, Object>();
-        properties.put(JcrConstants.JCR_PRIMARYTYPE, PublickConstants.NODE_TYPE_PAGE);
+        properties.put(JcrConstants.JCR_PRIMARYTYPE, JcrConstants.NT_UNSTRUCTURED);
         properties.put(JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY, PublickConstants.PAGE_TYPE_BLOG);
         properties.put("title", title);
         properties.put("visible", visible);

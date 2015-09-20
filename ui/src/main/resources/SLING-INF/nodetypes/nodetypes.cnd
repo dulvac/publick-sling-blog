@@ -6,15 +6,16 @@
 
 <publick = 'http://www.nateyolles.com/publick/1.0'>
 
-[publick:page] > nt:unstructured
-    - title (string)
-    - description (string)
-    - keywords (string)
-      multiple
-    - image (path)
-    - publishDate (date)
-    - visible (boolean)
-    - content (string)
+// maybe enforce this structure with the Sling Validation API?
+//[publick:page] > nt:unstructured
+//    - title (string)
+//   - description (string)
+//    - keywords (string)
+//      multiple
+//    - image (path)
+//    - publishDate (date)
+//    - visible (boolean)
+//    - content (string)
 
 [publick:template] > nt:hierarchyNode
 

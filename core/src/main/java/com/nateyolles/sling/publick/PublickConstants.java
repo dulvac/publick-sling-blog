@@ -66,9 +66,6 @@ public class PublickConstants {
     /** Node type base */
     private static final String NODE_TYPE = "publick";
 
-    /** Page node type */
-    public static final String NODE_TYPE_PAGE = NODE_TYPE + ":page";
-
     /** Template node type */
     public static final String NODE_TYPE_TEMPLATE = NODE_TYPE + ":template";
 

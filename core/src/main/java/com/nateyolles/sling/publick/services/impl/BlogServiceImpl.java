@@ -30,7 +30,7 @@ public class BlogServiceImpl implements BlogService {
      */
     private static final String BLOG_QUERY = String.format("SELECT * FROM [%s] AS s WHERE "
             + "ISDESCENDANTNODE([%s]) AND s.[%s] = '%s' ORDER BY [%s] desc",
-            PublickConstants.NODE_TYPE_PAGE,
+            JcrConstants.NT_UNSTRUCTURED,
             PublickConstants.BLOG_PATH,
             JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY,
             PublickConstants.PAGE_TYPE_BLOG,
