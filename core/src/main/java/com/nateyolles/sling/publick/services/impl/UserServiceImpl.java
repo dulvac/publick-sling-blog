@@ -8,6 +8,7 @@ import org.apache.felix.scr.annotations.Service;
 import org.apache.jackrabbit.api.JackrabbitSession;
 import org.apache.jackrabbit.api.security.user.Group;
 import org.apache.jackrabbit.api.security.user.User;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,16 +25,10 @@ public class UserServiceImpl implements UserService {
     /** The logger */
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    /**
-     * Get the authorable status of the current user.
-     *
-     * @param session The current session.
-     * @return true if the current user is an admin or author.
-     */
-    public boolean isAuthorable(Session session) {
+    public boolean isAuthorable(ResourceResolver resourceResolver) {
         boolean authorable = false;
 
-        JackrabbitSession js = (JackrabbitSession)session;
+        JackrabbitSession js = ((JackrabbitSession) resourceResolver.adaptTo(Session.class));
 
         try {
             Group authors = (Group)js.getUserManager().getAuthorizable(PublickConstants.GROUP_ID_AUTHORS);

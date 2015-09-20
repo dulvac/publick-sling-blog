@@ -1,26 +1,22 @@
 package com.nateyolles.sling.publick.servlets;
 
-import com.nateyolles.sling.publick.PublickConstants;
-import com.nateyolles.sling.publick.services.EmailService;
-import com.nateyolles.sling.publick.services.UserService;
-import com.nateyolles.sling.publick.services.impl.EmailServiceImpl;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+import javax.servlet.ServletException;
 
 import org.apache.commons.lang.CharEncoding;
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.sling.SlingServlet;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
-
-import javax.jcr.Session;
-import javax.servlet.ServletException;
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.nateyolles.sling.publick.PublickConstants;
+import com.nateyolles.sling.publick.services.EmailService;
+import com.nateyolles.sling.publick.services.UserService;
 
 /**
  * Post servlet to save email config updates.
@@ -67,7 +63,7 @@ public class EmailConfigServlet extends AdminServlet {
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response)
             throws ServletException, IOException {
         final PrintWriter writer = response.getWriter();
-        final boolean allowWrite = userService.isAuthorable(request.getResourceResolver().adaptTo(Session.class));
+        final boolean allowWrite = userService.isAuthorable(request.getResourceResolver());
 
         response.setCharacterEncoding(CharEncoding.UTF_8);
         response.setContentType("application/json");

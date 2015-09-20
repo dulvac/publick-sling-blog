@@ -1,17 +1,12 @@
 package com.nateyolles.sling.publick.components.foundation;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.script.Bindings;
-
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
-import org.apache.sling.api.scripting.SlingBindings;
 import org.apache.sling.api.scripting.SlingScriptHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -112,7 +107,7 @@ public class BlogPagination extends WCMUse {
         long pages = 0;
 
         if (blogService != null) {
-            pages = blogService.getNumberOfPages(pageSize);
+            pages = blogService.getNumberOfPages(request, pageSize);
         }
 
         return pages;

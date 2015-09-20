@@ -3,22 +3,14 @@ package com.nateyolles.sling.publick.services.impl;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import java.util.Map;
-
 import org.apache.commons.lang.StringUtils;
-import org.apache.felix.scr.annotations.Activate;
 import org.apache.felix.scr.annotations.Component;
-import org.apache.felix.scr.annotations.Deactivate;
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.Service;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import org.osgi.service.component.ComponentContext;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,25 +36,9 @@ public class LinkRewriterServiceImpl implements LinkRewriterService {
     private static final Logger LOGGER = LoggerFactory.getLogger(LinkRewriterServiceImpl.class);
 
     /**
-     * Service activation.
-     */
-    @Activate
-    protected void activate(Map<String, Object> properties) {
-    }
-
-    /**
-     * Service Deactivation.
-     *
-     * @param ctx The current component context.
-     */
-    @Deactivate
-    protected void deactivate(ComponentContext ctx) {
-    }
-
-    /**
      * Rewrite links based on the extensionless URLs settings.
      *
-     * @param value The link URL.
+     * @param link The link URL.
      * @param requestHost The host name from the request.
      * @return The rewritten link URL.
      */
@@ -103,7 +79,7 @@ public class LinkRewriterServiceImpl implements LinkRewriterService {
     /**
      * Rewrite all links in an HTML string based on the extensionless URLs settings.
      *
-     * @param value The HTML string.
+     * @param html The HTML string.
      * @param requestHost The host name from the request.
      * @return The HTML string with rewritten URLs.
      */

@@ -9,7 +9,6 @@ import org.apache.felix.scr.annotations.Property;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 
-import javax.jcr.Session;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -74,7 +73,7 @@ public class SystemFilter implements Filter {
 
         if ("POST".equals(method) && path.startsWith("/system")) {
             if (userService != null) {
-                final boolean allow = userService.isAuthorable(slingRequest.getResourceResolver().adaptTo(Session.class));
+                final boolean allow = userService.isAuthorable(slingRequest.getResourceResolver());
 
                 if (allow) {
                     chain.doFilter(request, response);

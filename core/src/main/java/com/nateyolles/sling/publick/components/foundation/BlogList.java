@@ -1,12 +1,11 @@
 package com.nateyolles.sling.publick.components.foundation;
 
-import javax.jcr.NodeIterator;
+import java.util.List;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.scripting.SlingScriptHelper;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -85,15 +84,9 @@ public class BlogList extends WCMUse {
      *
      * @return The blog posts.
      */
-    public NodeIterator getBlogs() {
-        NodeIterator nodes = null;
+    public List<Resource> getBlogs() {
         final Long offset = getOffset();
-
-        if (blogService != null) {
-            nodes = blogService.getPosts(offset, postsPerPage);
-        }
-
-        return nodes;
+        return blogService.getPosts(request, offset, postsPerPage);
     }
 
     /**

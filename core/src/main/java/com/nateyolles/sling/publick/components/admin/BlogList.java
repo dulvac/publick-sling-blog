@@ -1,7 +1,8 @@
 package com.nateyolles.sling.publick.components.admin;
 
-import javax.jcr.NodeIterator;
+import java.util.List;
 
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.scripting.SlingScriptHelper;
 
 import com.nateyolles.sling.publick.services.BlogService;
@@ -36,13 +37,7 @@ public class BlogList extends WCMUse {
      *
      * @return The blog posts ordered from newest to oldest.
      */
-    public NodeIterator getBlogs() {
-        NodeIterator nodes = null;
-
-        if (blogService != null) {
-            nodes = blogService.getPosts();
-        }
-
-        return nodes;
+    public List<Resource> getBlogs() {
+        return blogService.getPosts(getRequest());
     }
 }

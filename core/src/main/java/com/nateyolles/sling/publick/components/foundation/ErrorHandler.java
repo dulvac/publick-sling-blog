@@ -1,14 +1,11 @@
 package com.nateyolles.sling.publick.components.foundation;
 
-import org.apache.sling.api.SlingConstants;
-
-import javax.jcr.Session;
 import javax.servlet.ServletException;
 
+import org.apache.sling.api.SlingConstants;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.ResourceResolver;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,12 +33,12 @@ public class ErrorHandler extends WCMUse {
         SlingHttpServletResponse response = getResponse();
         ResourceResolver resolver = getResourceResolver();
 
-        isAnonymous = "anonymous".equals(resolver.adaptTo(Session.class).getUserID());
+        isAnonymous = "anonymous".equals(resolver.getUserID());
 
         message = (String) request.getAttribute(SlingConstants.ERROR_MESSAGE);
         Integer scObject = (Integer) request.getAttribute(SlingConstants.ERROR_STATUS);
 
-        code = (scObject != null) ? scObject.intValue() : response.SC_INTERNAL_SERVER_ERROR;
+        code = (scObject != null) ? scObject : SlingHttpServletResponse.SC_INTERNAL_SERVER_ERROR;
 
         if (message == null) {
             message = statusToString(code);

@@ -55,7 +55,7 @@ public class SystemConfigServlet extends AdminServlet {
             throws ServletException, IOException {
 
         final PrintWriter writer = response.getWriter();
-        final boolean allowWrite = userService.isAuthorable(request.getResourceResolver().adaptTo(Session.class));
+        final boolean allowWrite = userService.isAuthorable(request.getResourceResolver());
 
         response.setCharacterEncoding(CharEncoding.UTF_8);
         response.setContentType("application/json");
