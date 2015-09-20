@@ -63,18 +63,6 @@ public class PublickConstants {
     /** Admin email config path */
     public static final String EMAIL_CONFIG_PATH = ADMIN_CONFIG_PATH + "/email";
 
-    /** Node type base */
-    private static final String NODE_TYPE = "publick";
-
-    /** Template node type */
-    public static final String NODE_TYPE_TEMPLATE = NODE_TYPE + ":template";
-
-    /** Component node type */
-    public static final String NODE_TYPE_COMPONENT = NODE_TYPE + ":component";
-
-    /** Comment node type */
-    public static final String NODE_TYPE_COMMENT = NODE_TYPE + ":comment";
-
     /** Page base resource type */
     private static final String PAGE_TYPE = "publick/pages";
 

@@ -128,7 +128,7 @@ public class CommentServlet extends SlingAllMethodsServlet {
                 Map<String, Object> properties = new HashMap<String, Object>();
                 properties.put(AUTHOR_PARAMETER, author);
                 properties.put(COMMENT_PARAMETER, comment);
-                properties.put(JcrConstants.JCR_PRIMARYTYPE, PublickConstants.NODE_TYPE_COMMENT);
+                properties.put(JcrConstants.JCR_PRIMARYTYPE, JcrConstants.NT_UNSTRUCTURED);
 
                 Resource commentResource = resolver.create(resolver.getResource(parentPath), nodeName, properties);
                 Node commentNode = commentResource.adaptTo(Node.class);
