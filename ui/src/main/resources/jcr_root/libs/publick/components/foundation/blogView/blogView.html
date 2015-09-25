@@ -7,7 +7,7 @@
             <div class="page-header">
                 <a href="${resource.path}.html" data-sly-unwrap="${!blog.listView}">
                     <h1><span data-sly-attribute="${hblog.itemprop.title}">${blog.title}</span>
-                        <small><span data-sly-attribute="${hblog.itemprop.date_created}">${blog.month}/${blog.year}</span></small>
+                        <small><span data-sly-attribute="${hblog.itemprop.month_created}">${blog.month}/${blog.year}</span></small>
                     </h1>
                 </a>
             </div>
@@ -38,8 +38,16 @@
         <div class="col-md-12">
             <h3><span data-sly-attribute="${hblog.itemprop.comments}">${comments.count}</span> Comments</h3>
         </div>
-        <ul class="media-list" id="commentListContainer" data-sly-list.comment="${comments.comments}">
-            <li data-sly-attribute="${hblog.itemprop.comment}"
+        <div></div>
+        <ul class="media-list" id="commentListContainer">
+            <li class="media">
+                <div class="media-left">
+                    <span class="glyphicon glyphicon-user comment-user" aria-hidden="true"></span>
+                </div>
+                <div class="media-body"></div>
+            </li>
+            <li data-sly-repeat.comment="${comments.comments}"
+                data-sly-attribute="${hblog.itemprop.comment}"
                 data-sly-use.hcomment="${'org.apache.sling.hapi.HApiUse' @type=hblog.proptype.comment}"
                 class="media"
                 data-sly-attribute.data-comment-path="${comment.path}">
