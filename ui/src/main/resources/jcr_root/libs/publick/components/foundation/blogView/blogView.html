@@ -1,32 +1,132 @@
-<div data-sly-use.blog="com.nateyolles.sling.publick.components.foundation.BlogView"
+<div data-sly-use.hblog="${'org.apache.sling.hapi.HApiUse' @type='/libs/publick/types/blog_post'}"
+     data-sly-attribute="${hblog.itemtype}"
+     data-sly-use.blog="com.nateyolles.sling.publick.components.foundation.BlogView"
      class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="page-header">
-        <a href="${resource.path}.html" data-sly-unwrap="${!blog.listView}">
-          <h1>${blog.title} <small>${blog.month}/${blog.year}</small></h1>
-        </a>
-      </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <a href="${resource.path}.html" data-sly-unwrap="${!blog.listView}">
+                    <h1><span data-sly-attribute="${hblog.itemprop.title}">${blog.title}</span>
+                        <small><span data-sly-attribute="${hblog.itemprop.date_created}">${blog.month}/${blog.year}</span></small>
+                    </h1>
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="row" data-sly-test="${blog.imageRelativePath}">
-    <div class="col-md-12">
-      <a href="${resource.path}.html" data-sly-unwrap="${!blog.listView}">
-        <img src="${blog.imageRelativePath}" class="img-responsive center-block" alt="${blog.description}">
-      </a>
+    <div class="row" data-sly-test="${blog.imageRelativePath}">
+        <div class="col-md-12">
+            <a href="${resource.path}.html" data-sly-unwrap="${!blog.listView}">
+                <img data-sly-attribute="${hblog.itemprop.image}" src="${blog.imageRelativePath}" class="img-responsive center-block"
+                     alt="${blog.description}">
+            </a>
+        </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      ${blog.content @ context='html'}
+    <div class="row">
+        <div data-sly-attribute="${hblog.itemprop.content}" class="col-md-12">
+            ${blog.content @ context='html'}
+        </div>
     </div>
-  </div>
-  <div class="row" data-sly-test="${blog.keywords}">
-    <div class="col-md-12">
-      <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;
+    <div class="row" data-sly-test="${blog.keywords}">
+        <div class="col-md-12">
+            <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;
       <span data-sly-list="${blog.keywords}" data-sly-unwrap>
-        <span class="label label-default" data-sly-text="${item}"></span>
+        <span data-sly-attribute="${hblog.itemprop.label}" class="label label-default" data-sly-text="${item}"></span>
       </span>
+        </div>
     </div>
-  </div>
+    <div class="row" data-sly-use.comments="com.nateyolles.sling.publick.components.foundation.CommentsView">
+        <div class="col-md-12">
+            <h3><span data-sly-attribute="${hblog.itemprop.comments}">${comments.count}</span> Comments</h3>
+        </div>
+        <ul class="media-list" id="commentListContainer" data-sly-list.comment="${comments.comments}">
+            <li data-sly-attribute="${hblog.itemprop.comment}"
+                data-sly-use.hcomment="${'org.apache.sling.hapi.HApiUse' @type=hblog.proptype.comment}"
+                class="media"
+                data-sly-attribute.data-comment-path="${comment.path}">
+                <div class="media-left">
+                    <span class="glyphicon glyphicon-user comment-user" aria-hidden="true"></span>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        <span data-sly-attribute="${hcomment.itemprop.author}">${comment.author}</span>
+                        <small><span data-sly-attribute="${hcomment.itemprop.time_created}">${comment.date}</span>
+                            <a href="#" class="comment-reply">Reply</a>
+                        </small>
+                    </h4>
+                    <p data-sly-attribute="${hcomment.itemprop.comment_text}" data-sly-text="${comment.comment}"></p>
+
+                    <div data-sly-repeat.reply="${comment.replies}"
+                         data-sly-attribute="${hcomment.itemprop.reply}"
+                         data-sly-use.hreply="${'org.apache.sling.hapi.HApiUse' @type=hcomment.proptype.reply}"
+                         class="media">
+                        <div class="media-left">
+                            <span class="glyphicon glyphicon-user comment-user" aria-hidden="true"></span>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                <span data-sly-attribute="${hcomment.itemprop.author}">${reply.author}</span>
+                                <small><span data-sly-attribute="${hreply.itemprop.time_created}">${reply.date}</span>
+                                    <a href="#" class="comment-reply">Reply</a>
+                                </small>
+                            </h4>
+                            <p data-sly-attribute="${hreply.itemprop.comment_text}" data-sly-text="${reply.comment}"></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="row" id="addCommentContainer">
+            <div class="col-md-6">
+                <a href="#">Add Comment</a>
+            </div>
+        </div>
+
+        <div id="newCommentContainer">
+            <div class="row" id="commentForm">
+                <form data-rel="addcomment" method="POST" action="/bin/publick/addcomment">
+                    <div class="col-md-6">
+                        <div class="well">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h3>Post Comment</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" name="author" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <label>Comment</label>
+                                        <textarea class="form-control" name="comment"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <div data-sly-resource="${@ resourceType='publick/components/foundation/recaptcha'}"
+                                             data-sly-unwrap></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="hidden" name="blogPath" data-sly-attribute.value="${resource.path}">
+                                    <input type="hidden" name="commentPath" id="commentPath">
+                                    <button type="submit" class="btn btn-primary">Post</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

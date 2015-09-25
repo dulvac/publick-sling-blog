@@ -1,0 +1,32 @@
+{
+    "jcr:primaryType": "nt:unstructured",
+    "description": "A comment for a blog post",
+    "fqdn": "org.apache.sling.publick.comment",
+    "name": "comment",
+    "parameters": [],
+    "sling:resourceType": "sling/hapi/components/type",
+    "author": {
+        "jcr:primaryType": "nt:unstructured",
+        "description": "The name of the comment author",
+        "type": "org.apache.sling.hapi.common.Text",
+        "multiple": false
+    },
+    "time_created": {
+        "jcr:primaryType": "nt:unstructured",
+        "description": "The time and date when the comment was posted, as text. ",
+        "type": "org.apache.sling.hapi.common.Text",
+        "multiple": false
+    },
+    "comment_text": {
+        "jcr:primaryType": "nt:unstructured",
+        "description": "The text of the comment",
+        "type": "org.apache.sling.hapi.common.Text",
+        "multiple": false
+    },
+    "reply": {
+        "jcr:primaryType": "nt:unstructured",
+        "description": "A comment that is a reply for this comment",
+        "type": "/libs/publick/types/comment",
+        "multiple": true
+    }
+}

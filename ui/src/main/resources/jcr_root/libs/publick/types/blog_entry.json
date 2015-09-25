@@ -1,0 +1,20 @@
+{
+    "jcr:primaryType": "nt:unstructured",
+    "description": "A blog entry in a list of blogs",
+    "fqdn": "org.apache.sling.publick.blog_entry",
+    "name": "blog_entry",
+    "parameters": [],
+    "sling:resourceType": "sling/hapi/components/type",
+    "created_by": {
+        "jcr:primaryType": "nt:unstructured",
+        "description": "The user who created the blog entry",
+        "type": "org.apache.sling.hapi.common.Text",
+        "multiple": false
+    },
+    "date_created": {
+        "jcr:primaryType": "nt:unstructured",
+        "description": "The date when the blog entry was created",
+        "type": "org.apache.sling.hapi.common.Text",
+        "multiple": false
+    }
+}

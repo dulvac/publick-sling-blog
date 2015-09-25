@@ -1,0 +1,51 @@
+{
+    "jcr:primaryType": "nt:unstructured",
+    "description": "A blog post",
+    "fqdn": "org.apache.sling.publick.blog_post",
+    "name": "blog_post",
+    "parameters": [],
+    "sling:resourceType": "sling/hapi/components/type",
+    "title": {
+        "jcr:primaryType": "nt:unstructured",
+        "description": "The title of the blog post",
+        "type": "org.apache.sling.hapi.common.Text",
+        "multiple": false
+    },
+    "month_created": {
+        "jcr:primaryType": "nt:unstructured",
+        "description": "The month when the blog post was created. Format has the following format: 'M/YYYY'",
+        "type": "org.apache.sling.hapi.common.Text",
+        "multiple": false
+    },
+    "image": {
+        "jcr:primaryType": "nt:unstructured",
+        "description": "The headline image of the blog post",
+        "type": "org.apache.sling.hapi.common.Image",
+        "multiple": false
+    },
+    "content": {
+        "jcr:primaryType": "nt:unstructured",
+        "description": "The content of the blog post as text",
+        "type": "org.apache.sling.hapi.common.Text",
+        "multiple": false
+    },
+    "label": {
+        "jcr:primaryType": "nt:unstructured",
+        "description": "A label or keyword for the blog post",
+        "type": "org.apache.sling.hapi.common.Text",
+        "multiple": true
+    },
+    "comments": {
+        "jcr:primaryType": "nt:unstructured",
+        "description": "The number of comments this post received",
+        "type": "org.apache.sling.hapi.common.Number",
+        "multiple": false
+    },
+    "comment": {
+        "jcr:primaryType": "nt:unstructured",
+        "description": "A comment for this blog post",
+        "type": "/libs/publick/types/comment",
+        "multiple": true
+    }
+
+}

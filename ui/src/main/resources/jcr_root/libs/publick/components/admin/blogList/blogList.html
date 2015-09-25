@@ -12,10 +12,13 @@
                 </tr>
             </thead>
             <tbody data-sly-list="${list.blogs}">
-                <tr>
+                <tr data-sly-use.blogEntry="${'org.apache.sling.hapi.HApiUse' @type='/libs/publick/types/blog_entry'}"
+                    data-sly-attribute="${blogEntry.itemtype}">
                     <td data-sly-text="${itemList.count}"></td>
-                    <td><a href="${item.path}.html" target="_blank">${item.name}</a></td>
-                    <td><a href="edit.html?post=${item.path}"><i class="glyphicon glyphicon-pencil"></i></a></td>
+                    <td>
+                        <a rel="self" href="${item.path}.html" target="_blank">${item.name}</a>
+                    </td>
+                    <td><a rel="edit-form" href="edit.html?post=${item.path}"><i class="glyphicon glyphicon-pencil"></i></a></td>
                     <td><i class="glyphicon glyphicon-trash ${!list.authorable && 'disabled'}"></i></td>
                 </tr>
             </tbody>
